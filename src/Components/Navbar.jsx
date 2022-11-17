@@ -6,7 +6,7 @@ const Navbar = ({cart}) => {
         <>
             <nav className=" animate__animated animate__fadeInDown navbar bg-success">
             <div className="container-fluid">
-                <NavLink to="/" className="navbar-brand text-white display-3 title"> E-commerce React App </NavLink>
+                <NavLink to="/E-com" className="navbar-brand text-white display-3 title"> E-commerce React App </NavLink>
 
                 <div>
                     <NavLink to='/Cart'>

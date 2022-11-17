@@ -95,7 +95,7 @@ const App = () => {
     <>
         <Navbar cart={cart}/>
         <Routes>
-          <Route path="/" element={ <Content handleAdd={handle_Add} data={products} get_data={get_input_data} /> } />
+          <Route path="/E-com" element={ <Content handleAdd={handle_Add} data={products} get_data={get_input_data} /> } />
           <Route path="/Cart" element={ <Cart totale={handle_totale}  cart={cart} Delete={handle_delete} decrement={handle_decrement} increment={handle_increment} /> } />
         </Routes>
     </>
