@@ -26,10 +26,10 @@ const Categories = ({get_data}) => {
             <div className="animate__animated animate__fadeInDown">
                 <h1 className="animate__animated animate__fadeInDown display-4"> CATEGORIES </h1>
                 <select placeholder="33" onChange={( e ) => get_data(e.currentTarget.value) } className="form-select" aria-label="Default select example">
-                    <option className="display-6" value={'Nothing'} > Select Categorie </option>
+                    <option className="h3" value={'Nothing'} > Select Categorie </option>
                     {
                         Categories.map( (e) => {
-                            return <option className="display-6" key={[e]} value={e}> {e}</option>
+                            return <option className="h4" key={[e]} value={e}> {e}</option>
                         } )
                     }
                 </select>

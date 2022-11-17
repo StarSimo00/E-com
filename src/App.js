@@ -24,6 +24,7 @@ const App = () => {
 
   useEffect( () => {
     fetch_products()
+    // handle_totale()
   } , [] )
 
   const get_input_data = (e) => {
@@ -34,31 +35,68 @@ const App = () => {
     }
   }
 
-  useEffect( () => {
-      handle_Add()
-  } , [] )
-
   const handle_Add = (e) => {
-    if(Object.keys(cart).length === 0){
+
+    if(Object.keys(cart).length === 0  ){
       if(e === undefined){
         return cart
       }else{
-        return setCart([e])
+          e.quantity = 1
+          return setCart([e])    
       }
-    }else{
-    setCart( cart =>  [...cart , e ])
-    console.log(cart)
     }
+      if(cart.filter( (d) => d.id == e.id).length >0 ){
+        return 'cart'
+      }else{
+        e.quantity = 1 
+        return setCart( cart =>  [...cart , e ])
+      }
+      
+  
+            
   }
 
+  const handle_increment = (e) => {
+    const cart_ = [...cart]
+    cart_.forEach((element)=>{
+      if (element.id === e.id){
+          element.quantity ++
+      }
+    })
+    setCart(cart_)
+  }
+  
+  const handle_decrement = (e) => {
+    const cart_ = [...cart]
+    cart_.forEach((element)=>{
+      if (element.id === e.id){
+          element.quantity --
+      }
+    })
+    setCart(cart_)
+  }
+
+  const handle_delete = (e) => {
+    const cart_ = [...cart].filter( d => d.id !== e.id )
+    setCart(cart_)
+  }
+
+  const handle_totale = () => {
+    let totale = 0
+    cart.map( (e) => {
+      totale += parseFloat(e.price) * parseFloat(e.quantity)
+    } )
+
+    return totale.toFixed(2)
+  }
   
 
   return ( 
     <>
-        <Navbar/>
+        <Navbar cart={cart}/>
         <Routes>
           <Route path="/" element={ <Content handleAdd={handle_Add} data={products} get_data={get_input_data} /> } />
-          <Route path="/Cart" element={ <Cart  cart={cart} /> } />
+          <Route path="/Cart" element={ <Cart totale={handle_totale}  cart={cart} Delete={handle_delete} decrement={handle_decrement} increment={handle_increment} /> } />
         </Routes>
     </>
    );

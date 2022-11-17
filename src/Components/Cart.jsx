@@ -1,22 +1,28 @@
 import Cart_Product from "./Cart_Product";
 
-const Cart = ({cart}) => {
+const Cart = ({cart , increment , decrement , Delete , totale }) => {
+
     if(Object.keys(cart).length === 0){
-        return <div class="alert alert-success" role="alert">
+        return <div className="alert alert-success" role="alert">
                No Items Has Been Added Yet .....
             </div>
+            
     }
+
 
         return ( 
             <>
                 <div className="container p-3 animate__animated animate__fadeInDown">
-                    <div className="row g-1 ms-1">
+                    <div className="container row g-2">
                         { cart.map( (e) => {
-                            return <Cart_Product key={e.id} data={e} />
+                            return <Cart_Product key={e.id} data={e} Delete={() => Delete(e)} decrement={ () => decrement(e) } increment={() => increment(e)} />
                         } ) }
                     </div>
-                    
                 </div>
+
+                <nav className="sticky-bottom animate__animated animate__fadeInDown navbar bg-success">
+                        <p className="h2 text-white"> Your Totale is : {totale()} </p>
+                </nav>
             </>
          );
     }

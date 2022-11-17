@@ -1,7 +1,7 @@
 import { Cart2 } from "react-bootstrap-icons";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({cart}) => {
     return ( 
         <>
             <nav className=" animate__animated animate__fadeInDown navbar bg-success">
@@ -13,7 +13,7 @@ const Navbar = () => {
                         <button type="button" className="btn btn-success position-relative">
                             <Cart2 size={30} />
                             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                0
+                                {Object.keys(cart).length === 0 ? '' : Object.keys(cart).length }
                             </span>
                             </button>
                     </NavLink>
