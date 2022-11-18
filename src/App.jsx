@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route , Routes } from "react-router-dom";
 import Cart from "./Components/Cart";
+import CheckOut from "./Components/CheckOut";
 import Content from "./Components/Content";
 import Navbar from "./Components/Navbar"
 
@@ -45,7 +46,7 @@ const App = () => {
           return setCart([e])    
       }
     }
-      if(cart.filter( (d) => d.id == e.id).length >0 ){
+      if(cart.filter( (d) => d.id === e.id).length >0 ){
         return 'cart'
       }else{
         e.quantity = 1 
@@ -84,7 +85,7 @@ const App = () => {
   const handle_totale = () => {
     let totale = 0
     cart.map( (e) => {
-      totale += parseFloat(e.price) * parseFloat(e.quantity)
+      return totale += parseFloat(e.price) * parseFloat(e.quantity)
     } )
 
     return totale.toFixed(2)
@@ -97,6 +98,7 @@ const App = () => {
         <Routes>
           <Route path="/E-com" element={ <Content handleAdd={handle_Add} data={products} get_data={get_input_data} /> } />
           <Route path="/Cart" element={ <Cart totale={handle_totale}  cart={cart} Delete={handle_delete} decrement={handle_decrement} increment={handle_increment} /> } />
+          <Route path="/CheckOut" element={ <CheckOut cart={cart} /> }  />
         </Routes>
     </>
    );

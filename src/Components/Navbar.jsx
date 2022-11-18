@@ -12,7 +12,7 @@ const Navbar = ({cart}) => {
                     <NavLink to='/Cart'>
                         <button type="button" className="btn btn-success position-relative">
                             <Cart2 size={30} />
-                            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            <span className="position-absolute top-0 start-30 translate-middle badge rounded-pill bg-danger">
                                 {Object.keys(cart).length === 0 ? '' : Object.keys(cart).length }
                             </span>
                             </button>

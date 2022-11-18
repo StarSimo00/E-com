@@ -6,7 +6,7 @@ const Products = ({data  , handleAdd}) => {
       }
     return ( 
         <>
-            <div className=" animate__fadeInDown">
+            <div className=" animate__fadeInDown my-1">
                 <h1 className="animate__animated animate__fadeInDown display-5" > PRODUCTS </h1>
                 <div className="container">
                     <div className="row">

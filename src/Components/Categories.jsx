@@ -23,7 +23,7 @@ const Categories = ({get_data}) => {
 
     return ( 
         <>
-            <div className="animate__animated animate__fadeInDown">
+            <div className="animate__animated animate__fadeInDown my-1">
                 <h1 className="animate__animated animate__fadeInDown display-5"> CATEGORIES </h1>
                 <select placeholder="33" onChange={( e ) => get_data(e.currentTarget.value) } className="form-select" aria-label="Default select example">
                     <option className="h3" value={'Nothing'} > Select Categorie </option>
