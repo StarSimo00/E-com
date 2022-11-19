@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import { Route , Routes } from "react-router-dom";
 import Cart from "./Components/Cart";
+import CCV from "./Components/CCV";
 import CheckOut from "./Components/CheckOut";
 import Content from "./Components/Content";
 import Navbar from "./Components/Navbar"
+import Register from "./Components/Register";
+import {UserContext} from "./UserContext";
 
 const App = () => {
 
   const [ products , setProducts ] = useState(null)
   const [ cart , setCart ] = useState({})
+  const [ userDetails  , setUserDetails ] = useState({})
 
-  
   const fetch_products = async () => {
     const fetch_products = await fetch('https://fakestoreapi.com/products')
     const data = await fetch_products.json()
@@ -90,17 +93,23 @@ const App = () => {
 
     return totale.toFixed(2)
   }
+
+  
+
+    
   
 
   return ( 
-    <>
+    <UserContext.Provider value={ [userDetails , setUserDetails] }>
         <Navbar cart={cart}/>
         <Routes>
           <Route path="/E-com" element={ <Content handleAdd={handle_Add} data={products} get_data={get_input_data} /> } />
           <Route path="/Cart" element={ <Cart totale={handle_totale}  cart={cart} Delete={handle_delete} decrement={handle_decrement} increment={handle_increment} /> } />
-          <Route path="/CheckOut" element={ <CheckOut cart={cart} /> }  />
+          <Route path="/CheckOut" element={ <CheckOut cart={cart} total={handle_totale} /> }  />
+          <Route path="/Register" element={ <Register  /> } />
+          {/* <Route path="/CVV" element={ <CCV/> } /> */}
         </Routes>
-    </>
+    </UserContext.Provider>
    );
 }
  

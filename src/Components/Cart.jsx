@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../UserContext";
 import Cart_Product from "./Cart_Product";
 
 const Cart = ({cart , increment , decrement , Delete , totale }) => {
 
+    const [ userDetails ] = useContext(UserContext)
+    
+    
     if(Object.keys(cart).length === 0){
         return <div className="fixed-bottom alert alert-success" role="alert">
                No Items Has Been Added Yet .....
@@ -37,11 +42,11 @@ const Cart = ({cart , increment , decrement , Delete , totale }) => {
                         </div>
                     </div>
                     <div className="col-xl-4 my-2 animate__animated animate__fadeInDown">
-                    <div class="card p-4 m-2">
-                            <div class="card-body">
+                    <div className="card p-4 m-2">
+                            <div className="card-body">
                                 {/* <p className="display-5"> Your Cart : </p> */}
                                 <p className="display-6"> Your Totale is : {totale()} $ </p>
-                                <NavLink to="/CheckOut" /*{onClick={ () => send() }}*/ className="btn btn-danger"> Procced To Checkout </NavLink>
+                                <NavLink to="/Register" /*{onClick={ () => send() }}*/  className={ Object.keys(userDetails).length === 0 ? 'btn btn-danger disabled' : 'btn btn-danger' }>  { Object.keys(userDetails).length === 0 ? "You Need To Be Logged To Proceed To Checkout" : 'Procced To Checkout' }   </NavLink>
                             </div>
                             </div>
                             <div>
