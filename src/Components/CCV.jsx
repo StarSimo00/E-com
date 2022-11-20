@@ -19,6 +19,7 @@ const CCV = () => {
 
     return ( 
         <>
+                <h1 className="container display-3 text-success animate__animated animate__fadeInDown"> Enter Your Card Info </h1>
         <div className="container-fluid animate__animated animate__fadeInDown">
 	<div className="row justify-content-center">
 					<div className="col-md-7 col-sm-12 p-0 box">

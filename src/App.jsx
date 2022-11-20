@@ -3,6 +3,7 @@ import { Route , Routes } from "react-router-dom";
 import Cart from "./Components/Cart";
 import CCV from "./Components/CCV";
 import CheckOut from "./Components/CheckOut";
+import ConfirmPurchase from "./Components/ConfirmPurchase";
 import Content from "./Components/Content";
 import Navbar from "./Components/Navbar"
 import Register from "./Components/Register";
@@ -28,7 +29,6 @@ const App = () => {
 
   useEffect( () => {
     fetch_products()
-    // handle_totale()
   } , [] )
 
   const get_input_data = (e) => {
@@ -107,7 +107,8 @@ const App = () => {
           <Route path="/Cart" element={ <Cart totale={handle_totale}  cart={cart} Delete={handle_delete} decrement={handle_decrement} increment={handle_increment} /> } />
           <Route path="/CheckOut" element={ <CheckOut cart={cart} total={handle_totale} /> }  />
           <Route path="/Register" element={ <Register  /> } />
-          {/* <Route path="/CVV" element={ <CCV/> } /> */}
+          <Route path="/CCV" element={ <CCV/> } />
+          <Route path="/ConfirmPurchase" element={ <ConfirmPurchase/> }  />
         </Routes>
     </UserContext.Provider>
    );

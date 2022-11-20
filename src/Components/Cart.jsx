@@ -46,7 +46,7 @@ const Cart = ({cart , increment , decrement , Delete , totale }) => {
                             <div className="card-body">
                                 {/* <p className="display-5"> Your Cart : </p> */}
                                 <p className="display-6"> Your Totale is : {totale()} $ </p>
-                                <NavLink to="/Register" /*{onClick={ () => send() }}*/  className={ Object.keys(userDetails).length === 0 ? 'btn btn-danger disabled' : 'btn btn-danger' }>  { Object.keys(userDetails).length === 0 ? "You Need To Be Logged To Proceed To Checkout" : 'Procced To Checkout' }   </NavLink>
+                                <NavLink to={ Object.keys(userDetails).length === 0 ? '/Register' : '/CCV' } /*{onClick={ () => send() }}*/  className='btn btn-danger'>  { Object.keys(userDetails).length === 0 ? "You Need To Be Logged To Proceed To Checkout" : 'Procced To Checkout' }   </NavLink>
                             </div>
                             </div>
                             <div>

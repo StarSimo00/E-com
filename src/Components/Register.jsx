@@ -1,7 +1,6 @@
 import { useContext ,  useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
-import CCV from "./CCV";
 
 const Register = () => {
 
@@ -16,10 +15,22 @@ const Register = () => {
 
     if(Object.keys(userDetails).length > 0){
         return <>
-            <div className="container"> 
-                <h1 className="container display-3 text-success animate__animated animate__fadeInDown"> Enter Your Card Info </h1>
-                <CCV/>    
-             </div>
+        <div className="container d-flex justify-content-center">
+            <div class="card my-5" style={{width: 400}}>
+                <div class="card-body">
+                    <h5 class="card-title">User Info</h5>
+                    <p class="card-text"> {userDetails[0].FirstName} {userDetails[0].LastName } </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> {userDetails[0].Email} </li>
+                    <li class="list-group-item"> {userDetails[0].Gender} </li>
+                </ul>
+                <div class="card-body">
+                    <NavLink to='/Cart' class="card-link ms-2"> Check Your Cart </NavLink>
+                    <NavLink  class="card-link  ms-2"> Log Out</NavLink>
+                </div>
+                </div>
+        </div>
         </>
     }
 
